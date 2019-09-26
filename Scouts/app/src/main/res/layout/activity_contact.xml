@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#605F5F"
+    tools:context=".Contact">
+
+    <TextView
+        android:id="@+id/txtMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="Contact Form"
+        android:textColor="#26CDB7"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txtSub"
+        android:textColor="#ffffff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtMain"
+        android:text="If you want to know something or want to be part of us. Just send us a message here. Thanks"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <TextView
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtSub"
+        android:layout_below="@+id/txtSub"
+        android:layout_marginTop="11dp"
+        android:text="Name"
+        android:textColor="#26CDB7"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/your_name"
+        android:hint="fiza asif"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textSize="18sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtName"
+        android:layout_marginTop="6dp"
+        android:background="#ffffff"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/your_email"
+        android:layout_below="@+id/your_name"
+        android:layout_marginTop="13dp"
+        android:text="Email"
+        android:textColor="#26CDB7"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/your_email"
+        android:hint="abc@mail.com"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="#ffffff"
+        android:layout_marginTop="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtEmail"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text=""
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+
+    <TextView
+        android:id="@+id/txtSubject"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/your_subject"
+        android:layout_below="@+id/your_email"
+        android:layout_marginTop="15dp"
+        android:text="Subject"
+        android:textColor="#26CDB7"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/your_subject"
+        android:hint="Join Community"
+        android:layout_marginTop="6dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtSubject"
+        android:background="#ffffff"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/txtMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/your_message"
+        android:layout_below="@+id/your_subject"
+        android:layout_marginTop="16dp"
+        android:text="Message"
+        android:textColor="#26CDB7"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/your_message"
+        android:hint="I want to be a part of this community."
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtMsg"
+        android:background="#ffffff"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"/>
+
+    <Button
+        android:id="@+id/post_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="24dp"
+        android:background="#26CDB7"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+</RelativeLayout>
