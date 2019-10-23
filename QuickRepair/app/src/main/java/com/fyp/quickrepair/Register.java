@@ -1,7 +1,7 @@
 package com.fyp.quickrepair;
 
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -11,8 +11,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
-import com.fyp.quickrepair.R;
+import com.fyp.quickrepair.Model.Users;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -25,8 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Register extends AppCompatActivity implements View.OnClickListener {
 
     ProgressBar progressBar;
-    String username;
-    EditText editTextEmail, editTextPassword,editTextUsername;
+    String shopname,phonenumber;
+    EditText editTextEmail, editTextPassword,editTextName,editTextPhone;
 
     DatabaseReference datausers;
 
@@ -37,9 +38,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        editTextUsername = (EditText) findViewById(R.id.usrusr);
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(ContextCompat.getColor(this,R.color.darkbleue)); //status bar or the time bar at the top
+        }
+
+        editTextName = (EditText) findViewById(R.id.name);
         editTextEmail = (EditText) findViewById(R.id.useremail);
         editTextPassword = (EditText) findViewById(R.id.pswrdd);
+        editTextPhone = (EditText) findViewById(R.id.phone);
         progressBar = (ProgressBar) findViewById(R.id.progressBar2);
 
         mAuth = FirebaseAuth.getInstance();
@@ -52,7 +58,8 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     private void registerUser() {
         String email = editTextEmail.getText().toString().trim();
-        username = editTextUsername.getText().toString().trim();
+        shopname = editTextName.getText().toString().trim();
+        phonenumber = editTextPhone.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
 
         if (email.isEmpty()) {
@@ -60,9 +67,14 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             editTextEmail.requestFocus();
             return;
         }
-        if (username.isEmpty()) {
-            editTextEmail.setError("Username is required");
-            editTextEmail.requestFocus();
+        if (shopname.isEmpty()) {
+            editTextName.setError("Shop Name is required");
+            editTextName.requestFocus();
+            return;
+        }
+        if (phonenumber.isEmpty()) {
+            editTextPhone.setError("Phone Number is required");
+            editTextPhone.requestFocus();
             return;
         }
 
@@ -93,12 +105,13 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                 if (task.isSuccessful()) {
 
                     FirebaseUser cuser=FirebaseAuth.getInstance().getCurrentUser();
-                    datausers.child(cuser.getUid()).child("username").setValue(username);
+                    Users user=new Users(shopname,phonenumber,"customer");
+                    datausers.child(cuser.getUid()).setValue(user);
                     Toast.makeText(Register.this,"User Successfully Registered",Toast.LENGTH_LONG).show();
 
 
                     finish();
-                    startActivity(new Intent(Register.this, MainMenu.class));
+                    startActivity(new Intent(Register.this, MenuDrawer.class));
                 } else {
 
                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {

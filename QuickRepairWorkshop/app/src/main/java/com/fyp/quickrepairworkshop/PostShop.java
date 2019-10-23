@@ -38,12 +38,13 @@ import java.util.Locale;
 
 public class PostShop extends AppCompatActivity implements View.OnClickListener, LocationListener {
 
-    private static  final int REQUEST_LOCATION=1;
+
     DatabaseReference datausers,userdata;
     private FirebaseAuth mAuth;
     private EditText des,charges,address;
     String dis,rating,add,charge,type;
     private Button logout,post;
+    private static  final int REQUEST_LOCATION=1;
     LocationManager locationManager;
     TextView locationText;
     String latitude,longitude,addressline,city;/*

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShopDetail">
+    
+    <RelativeLayout
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/primaryTextColor">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Workshop Detail"
+            android:textColor="@color/whiteTextColor"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            android:textAlignment="center"
+            android:padding="10dp"/>
+
+
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_below="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:scaleType="fitXY"
+            android:src="@drawable/carshop"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/mainImage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"/>
+
+        <TextView
+            android:layout_marginStart="10dp"
+            android:id="@+id/shopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Workshop Name"
+            android:textSize="25sp"
+            android:textColor="@color/primaryTextColor"
+            android:layout_below="@+id/mainImage"
+            />
+
+        <LinearLayout
+            android:layout_marginStart="10dp"
+            android:id="@+id/shopLocation"
+            android:layout_below="@+id/shopName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/mapicon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:tint="@color/primaryTextColor"
+                android:src="@drawable/ic_mappointer"/>
+
+            <TextView
+                android:id="@+id/shopAddress"
+                android:layout_width="wrap_content"
+                android:text="Address"
+                android:textColor="@color/primaryTextColor"
+                android:textSize="25sp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <RatingBar
+            android:id="@+id/ratingbar"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/shopLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_below="@id/ratingbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:weightSum="12">
+
+                    <Button
+                        android:id="@+id/sms"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:shadowRadius="0.2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/primaryTextColor"
+                        android:textColor="@color/whiteTextColor"
+                        android:text="SMS"
+                        android:textSize="20sp"
+                        android:elevation="5dp"/>
+
+                    <Button
+                        android:id="@+id/call"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:shadowRadius="0.2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/primaryTextColor"
+                        android:textColor="@color/whiteTextColor"
+                        android:text="CALL"
+                        android:textSize="20sp"
+                        android:elevation="5dp"/>
+
+                    <Button
+                        android:id="@+id/email"
+                        android:layout_margin="20dp"
+                        android:layout_weight="1"
+                        android:shadowRadius="0.5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/primaryTextColor"
+                        android:textColor="@color/whiteTextColor"
+                        android:text="EMAIL"
+                        android:textSize="20sp"
+                        android:elevation="5dp"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/setAppointment"
+                    android:layout_margin="20dp"
+                    android:layout_weight="1"
+                    android:shadowRadius="6.0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/darkbleue"
+                    android:textColor="@color/whiteTextColor"
+                    android:text="MAKE APPOINTMENT"
+                    android:textSize="20sp"
+                    android:elevation="5dp"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
+        
+    </RelativeLayout>
+
+
+    
+
+</RelativeLayout>
