@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:id="@+id/workshopRecycler"
+        android:layout_height="match_parent"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/search"
+        android:layout_width="300dp"
+        android:layout_centerInParent="true"
+        android:layout_height="300dp"
+        app:lottie_autoPlay="true"
+        android:padding="50dp"
+        app:lottie_loop="true"
+        android:layout_marginBottom="20dp"
+        app:lottie_fileName="searchask.json" />
+
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:id="@+id/anim">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/emptyLottie"
+            android:layout_width="300dp"
+            android:layout_centerInParent="true"
+            android:layout_height="300dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_marginBottom="20dp"
+            app:lottie_fileName="emptybox.json" />
+
+        <TextView
+
+            android:id="@+id/emptyText"
+            android:layout_below="@id/emptyLottie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:text="You don't have any active tests"/>
+
+        <TextView
+            android:id="@+id/emptyInfo"
+            android:layout_below="@id/emptyText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="13sp"
+            android:text="Click on add button to create test"/>
+
+    </RelativeLayout>
+
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="10dp"
+        app:srcCompat="@drawable/ic_add"
+        android:tint="#ffff"/>
+
+</RelativeLayout>
