@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity  {
                 progressBar.setVisibility(View.GONE);
                 if (task.isSuccessful()) {
                     finish();
-                    Intent intent = new Intent(Login.this, MenuDrawer.class);
+                    Intent intent = new Intent(Login.this, Menu.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 } else {
@@ -120,7 +120,7 @@ public class Login extends AppCompatActivity  {
 
         if (mAuth.getCurrentUser() != null) {
             finish();
-            startActivity(new Intent(this, MenuDrawer.class));
+            startActivity(new Intent(this, Menu.class));
         }
     }
 

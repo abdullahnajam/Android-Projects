@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -43,7 +44,6 @@ public class ServicesListView extends AppCompatActivity implements LocationListe
     private LottieAnimationView anim;
     ArrayList<String> keys=new ArrayList<>();
     ArrayList<Float> away=new ArrayList<>();
-    private static  final int REQUEST_LOCATION=1;
     LocationManager locationManager;
     TextView locationText;
     String latitude,longitude,addressline,city;
@@ -83,22 +83,35 @@ public class ServicesListView extends AppCompatActivity implements LocationListe
                 anim.setVisibility(View.GONE);
 
                 for(DataSnapshot dataSnapshot1 :dataSnapshot.getChildren()){
-                    keys.add(dataSnapshot1.getKey());
-                    ServiceDataModel userdetails = dataSnapshot1.getValue(ServiceDataModel.class);
-                    //calculating distance
-                    userPlocation = new Location("");
-                    userPlocation.setLatitude(Double.parseDouble(userdetails.getLattidute()));
-                    userPlocation.setLongitude(Double.parseDouble(userdetails.getLongitude()));
-                    float distanceInMeters = userClocation.distanceTo(userPlocation);
-                    distanceInMeters/=1000;
-                    DecimalFormat numberFormat = new DecimalFormat("#.0");
+                    for(DataSnapshot dataSnapshot2:dataSnapshot1.getChildren())
+                    {
+                        keys.add(dataSnapshot2.getKey());
+                        ServiceDataModel userdetails = dataSnapshot2.getValue(ServiceDataModel.class);
+                        //calculating distance
+                        userPlocation = new Location("");
+                        userPlocation.setLatitude(Double.parseDouble(userdetails.getLattidute()));
+                        userPlocation.setLongitude(Double.parseDouble(userdetails.getLongitude()));
+                        if(userClocation==null)
+                        {
+                            if (ActivityCompat.checkSelfPermission(ServicesListView.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(ServicesListView.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                                return;
+                            }
+                            userClocation = locationManager.getLastKnownLocation(locationManager.NETWORK_PROVIDER);
+                        /*userClocation.setLatitude(33.6111999f);
+                        userClocation.setLongitude(72.9872115f);*/
+                        }
+                        if(userClocation!=null)
+                        {
+                            float distanceInMeters = userClocation.distanceTo(userPlocation);
+                            distanceInMeters/=1000;
+                            DecimalFormat numberFormat = new DecimalFormat("#.0");
 
-                    away.add(Float.parseFloat(numberFormat.format(distanceInMeters)));
+                            away.add(Float.parseFloat(numberFormat.format(distanceInMeters)));
 
+                            Adaptor.addMessage(userdetails);
 
-
-
-                    Adaptor.addMessage(userdetails);
+                        }
+                    }
 
 
                 }
@@ -128,7 +141,6 @@ public class ServicesListView extends AppCompatActivity implements LocationListe
         latitude=location.getLatitude()+"";
         longitude=location.getLongitude()+"";
         userClocation=location;
-        userClocation.setLatitude(Double.parseDouble(latitude));
         locationText.setText("Latitude: " + location.getLatitude() + "\n Longitude: " + location.getLongitude());
 
         try {
